@@ -2,8 +2,9 @@ import {A}                  from "@solidjs/router";
 import {Component, createSignal, Show} from "solid-js";
 
 import {Drawer} from "./Drawer";
-import {Icon}                        from "solid-heroicons";
-import {magnifyingGlass, userCircle} from "solid-heroicons/solid";
+import {Icon}                                  from "solid-heroicons";
+import {calendar, magnifyingGlass, userCircle} from "solid-heroicons/solid";
+import {DailyActivities}                       from "./cards/activities/DailyActivities";
 
 
 const Navigation: Component<{
@@ -49,27 +50,25 @@ const Navigation: Component<{
                                 {/* Flyout menus */}
 
 
-                                <div class="flex flex-1 items-center justify-end">
-                                    {/* Search */}
-                                    <a href="#" class="p-2 text-gray-400 hover:text-gray-500">
-                                        <span class="sr-only">Search</span>
-                                        <Icon path={magnifyingGlass} class="h-6 w-6 stroke-gray-400"/>
-                                    </a>
+                                <div class="flex flex-1 items-center space-x-6 justify-end">
 
-                                    {/* Cart */}
-                                    <div class="ml-4 flow-root lg:ml-8">
-                                        <a href="#" class="-m-2 flex items-center p-2 group">
-                                            <Icon path={userCircle}
-                                                  class="h-6 w-6 flex-shrink-0 stroke-gray-400 group-hover:text-gray-500"
 
-                                            />
-                                        </a>
-                                    </div>
+                                    <Drawer
+                                        title={'Today'}
+                                        subTitle={'23 March 2022'}
+                                        icon={calendar}
+                                        enableButton>
+                                        <div class={'p-4'}>
+
+                                            <DailyActivities/>
+
+
+                                        </div>
+                                    </Drawer>
 
 
                                     <Drawer enableButton>
                                         <div class={'p-4'}>
-
 
                                         </div>
                                     </Drawer>

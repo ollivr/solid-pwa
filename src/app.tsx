@@ -1,10 +1,13 @@
-import { Component, createSignal } from 'solid-js';
-import {Route, Routes} from "@solidjs/router";
+import {Component, createSignal, JSX} from 'solid-js';
+import {Route, Routes}                from "@solidjs/router";
 import Home                        from "./pages/Home";
 
 export function classNames(...classes: (string | boolean | undefined)[]): string {
     return classes.filter(Boolean).join(' ')
 }
+
+export type IconProps = { path: JSX.Element, outline?: boolean | undefined, mini?: boolean | undefined };
+
 
 export const App: Component = () => {
   const [count, setCount] = createSignal(0);
