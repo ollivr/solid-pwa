@@ -21,7 +21,7 @@ const Footer: Component<{}> = props => {
                 <div class="px-6 py-1 space-x-4 sm:block">
 
                     <A
-                        href={`/operations`}
+                        href={`/`}
                         class="text-sm text-gray-700"
                     >
                         Dashboard

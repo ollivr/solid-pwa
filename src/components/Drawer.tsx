@@ -3,6 +3,7 @@ import {Component, createEffect, createSignal, JSXElement} from 'solid-js';
 import {bars_4, xMark} from "solid-heroicons/solid";
 import {Icon}          from "solid-heroicons";
 import type {IconProps} from "../app";
+import {classNames} from "../app";
 
 const Drawer: Component<{
     title?: string;
@@ -10,6 +11,7 @@ const Drawer: Component<{
     icon?: IconProps,
     isOpen?: boolean;
     enableButton?: boolean;
+    className?: string;
     children?: JSXElement,
 }> = props => {
 
@@ -37,12 +39,15 @@ const Drawer: Component<{
 
             {enableButton() && (
 
-                <div class="flow-root lg:ml-8">
+                <div class="lg:ml-8">
                     <button
                         onClick={openModal}
-                        type={'button'} class="-m-2 flex items-center p-2 group">
+                        type={'button'} class="flex items-center">
                         <Icon path={props.icon ?? bars_4}
-                              class="h-6 w-6 flex-shrink-0 stroke-gray-400 group-hover:text-gray-500"
+                              class={classNames(
+                                  props.className,
+                                  'h-6 w-6 flex-shrink-0 stroke-gray-400 group-hover:text-gray-500'
+                              )}
                               aria-hidden="true"
                         />
                     </button>
@@ -70,7 +75,7 @@ const Drawer: Component<{
                                 <div class="pointer-events-auto w-screen max-w-md bg-white">
                                     <div
                                         class="absolute inset-y-0 z-30 flex h-full w-screen max-w-md flex-col bg-white py-2 shadow-xl">
-                                        <div class="sticky z-50 top-0 left-0 right-0 header py-2 border-b border-slate-100 ">
+                                        <div class="sticky z-50 top-0 left-0 right-0 header py-2 min-h-[60px] border-b border-slate-100 ">
                                             <div class="px-7 flex justify-between items-center">
                                                 <div class="heading">
                                                     <p class="text-xl font-semibold leading-tight text-gray-800">
@@ -80,7 +85,7 @@ const Drawer: Component<{
                                                 </div>
                                                 <button
                                                     type="button"
-                                                    class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring focus:ring-transparent"
+                                                    class="absolute top-0 right-0 py-3 px-4 rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring focus:ring-transparent"
                                                     onClick={closeModal}
                                                 >
                                                     <span class="sr-only">Close panel</span>

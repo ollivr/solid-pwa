@@ -2,9 +2,8 @@ import {A}                  from "@solidjs/router";
 import {Component, createSignal, Show} from "solid-js";
 
 import {Drawer} from "./Drawer";
-import {Icon}                                  from "solid-heroicons";
-import {calendar, magnifyingGlass, userCircle} from "solid-heroicons/solid";
-import {DailyActivities}                       from "./cards/activities/DailyActivities";
+import {bell, calendar, magnifyingGlass, userCircle} from "solid-heroicons/solid";
+import {DailyActivities}                             from "./cards/activities/DailyActivities";
 
 
 const Navigation: Component<{
@@ -50,13 +49,26 @@ const Navigation: Component<{
                                 {/* Flyout menus */}
 
 
-                                <div class="flex flex-1 items-center space-x-6 justify-end">
-
+                                <div class="flex items-center space-x-6 justify-end">
 
                                     <Drawer
-                                        title={'Today'}
-                                        subTitle={'23 March 2022'}
+                                        title={'Notifications'}
+                                        subTitle={'Wed, March 23'}
+                                        icon={bell}
+                                        className={'items-center pt-1'}
+                                        enableButton>
+                                        <div class={'p-4'}>
+
+
+
+                                        </div>
+                                    </Drawer>
+
+                                    <Drawer
+                                        title={'Activities'}
+                                        subTitle={'Wed, March 23'}
                                         icon={calendar}
+                                        className={'items-center p-0.5'}
                                         enableButton>
                                         <div class={'p-4'}>
 
@@ -67,7 +79,9 @@ const Navigation: Component<{
                                     </Drawer>
 
 
-                                    <Drawer enableButton>
+                                    <Drawer
+                                        className={'p-0.5'}
+                                        enableButton>
                                         <div class={'p-4'}>
 
                                         </div>
