@@ -1,4 +1,4 @@
-import './styles/tailwind.css';
+import './style.css';
 
 import { render } from 'solid-js/web';
 import { App } from './app';
