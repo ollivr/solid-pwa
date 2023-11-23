@@ -4,9 +4,9 @@
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "Solid",
-    "description": "Solid + Snowpack",
-    "short_name": "Solid",
+    "name": "Ollivr",
+    "description": "Ollivr Application",
+    "short_name": "Ollivr",
     "icons": [
         {
             "src": "/icons/icon-192x192.png",

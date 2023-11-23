@@ -1,4 +1,10 @@
 import { Component, createSignal } from 'solid-js';
+import {Route, Routes} from "@solidjs/router";
+import Home                        from "./pages/Home";
+
+export function classNames(...classes: (string | boolean | undefined)[]): string {
+    return classes.filter(Boolean).join(' ')
+}
 
 export const App: Component = () => {
   const [count, setCount] = createSignal(0);
@@ -7,23 +13,12 @@ export const App: Component = () => {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => decrement(2)}
-        class="bg-gray-900 text-gray-100 p-4 text-3xl"
-      >
-        -
-      </button>
-
-      <span class="p-4 text-3xl">{count()}</span>
-
-      <button
-        type="button"
-        onClick={() => increment(1)}
-        class="bg-gray-900 text-gray-100 p-4 text-3xl"
-      >
-        +
-      </button>
+        <Routes>
+            <Route
+                path="/"
+                component={Home}
+            />
+        </Routes>
     </>
   );
 };
