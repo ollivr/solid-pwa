@@ -1,4 +1,3 @@
-import { A }                        from "@solidjs/router";
 import type {Component, JSXElement} from "solid-js";
 import {Navigation}                 from "./Navigation";
 import {Footer}                     from "./Footer";

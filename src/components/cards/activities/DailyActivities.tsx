@@ -7,7 +7,7 @@ const DailyActivities: Component<{}> = props => {
         <>
 
             <div
-                class="bg-white rounded z-10 max-w-3xl  shadow-[0px_10px_10px_-5px_rgba(0,0,0,0.06),0px_20px_25px_-5px_rgba(0,0,0,0.1)]">
+                class="relative overflow-x-hidden bg-white rounded z-10 max-w-3xl  shadow-[0px_10px_10px_-5px_rgba(0,0,0,0.06),0px_20px_25px_-5px_rgba(0,0,0,0.1)]">
                 <div class="px-7">
                     <div class="flex pt-7">
                         <div class="first-item relative">
@@ -185,7 +185,7 @@ const DailyActivities: Component<{}> = props => {
                                 </div>
                             </div>
                             <div class="border border-slate-300 p-6 mt-5 w-full">
-                                <div class="flex gap-4 lg:flex-row flex-col ">
+                                <div class="flex gap-4 lg:flex-row flex-col overflow-x-auto touch-pan-x">
                                     <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/ux-indonesia-pqzRfBhd9r0-unsplash%201.png"
                                          alt="" class="rounded" />
                                     <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/nick-adams-yTWq8n3-4k0-unsplash%201.png"

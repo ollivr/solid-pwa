@@ -80,6 +80,8 @@ const Navigation: Component<{
 
 
                                     <Drawer
+                                        title={'Profile'}
+                                        subTitle={'Wed, March 23'}
                                         className={'p-0.5'}
                                         enableButton>
                                         <div class={'p-4'}>
