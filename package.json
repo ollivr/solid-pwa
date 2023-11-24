@@ -11,7 +11,6 @@
   "devDependencies": {
     "@babel/core": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
-    "@melodev/solid-datepicker": "^0.1.15",
     "@snowpack/plugin-babel": "^2.1.7",
     "@snowpack/plugin-postcss": "^1.4.3",
     "@snowpack/plugin-typescript": "^1.2.1",
@@ -20,8 +19,6 @@
     "autoprefixer": "^10.4.16",
     "axios": "^1.6.2",
     "babel-preset-solid": "^1.8.6",
-    "dayjs": "^1.11.10",
-    "js-cookie": "^3.0.5",
     "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
     "prettier": "^3.1.0",

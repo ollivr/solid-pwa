@@ -1,8 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios";
 
-// COOKIES
-import Cookies from "js-cookie";
-
 // TYPES
 import { IService, EHttpMethod } from "../types";
 
@@ -19,10 +16,10 @@ class HttpService {
   }
 
   // Get authorization token for requests
-  private get getAuthorization() {
-    const accessToken = Cookies.get("AccessToken") || "";
-    return accessToken ? { Authorization: `Bearer ${accessToken}` } : {};
-  }
+  // private get getAuthorization() {
+  //  // const accessToken = Cookies.get("AccessToken") || "";
+  //  // return accessToken ? { Authorization: `Bearer ${accessToken}` } : {};
+  // }
 
   // Initialize service configuration
   public service() {
@@ -34,8 +31,8 @@ class HttpService {
   // Set up request headers
   private setupHeaders(hasAttachment = false) {
     return hasAttachment
-      ? { "Content-Type": "multipart/form-data", ...this.getAuthorization }
-      : { "Content-Type": "application/json", ...this.getAuthorization };
+      ? { "Content-Type": "multipart/form-data", } //
+      : { "Content-Type": "application/json" };
   }
 
   // Handle HTTP requests
