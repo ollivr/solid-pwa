@@ -14,6 +14,7 @@ const Home: Component<{
         <Layout>
             <section class="bg-gray-100 p-8 text-gray-700 overflow-y-auto h-full">
 
+
             </section>
         </Layout>
     );

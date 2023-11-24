@@ -55,7 +55,7 @@ const Navigation: Component<{
                                         title={'Notifications'}
                                         subTitle={'Wed, March 23'}
                                         icon={bell}
-                                        className={'items-center pt-1'}
+                                        className={'items-center pt-0.5'}
                                         enableButton>
                                         <div class={'p-4'}>
 

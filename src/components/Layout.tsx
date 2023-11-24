@@ -21,7 +21,7 @@ const Layout: Component<{
                     height: '100dvh'
 
                 }}
-                class={'fixed inset-x-0 top-14 bottom-0'}>
+                class={'fixed inset-x-0 top-14 bottom-0 w-full h-full'}>
 
                 {props.children || ''}
 
