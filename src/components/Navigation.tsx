@@ -35,13 +35,15 @@ const Navigation: Component<{
                                             </A>
                                         }
                                         when={props.logo}>
-                                        <A href="/">
+                                        <A class={'flex justify-end items-center'} href="/">
                                             <span class="sr-only">{title()}</span>
                                             <img
                                                 class="h-12 w-12 p-2"
                                                 src={props.logo}
                                                 alt={title()}
                                             />
+
+                                            <h1 class={'hidden sm:block text-xl'}>{props.title}</h1>
                                         </A>
                                     </Show>
 

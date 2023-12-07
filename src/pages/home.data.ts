@@ -1,23 +1,18 @@
-import {HttpService}                from "../services";
-import {createEffect, createSignal} from "solid-js";
-import type {IAccount, IUser}       from '../types/models';
+import {HttpService}                                from "../services";
+import {createEffect, createResource, createSignal} from "solid-js";
+import type {IAccount, IUser}                       from '../types/models';
+import {useParams}                                  from "@solidjs/router";
+
+
+async function fetchData() {
+    const response = await fetch(`/data.json`);
+    console.log(response.body)
+    return await response.json();
+}
+
 
 export function homeData() {
-    const http = new HttpService();
-    const [getAccount, setAccount] = createSignal<IAccount[]>([]);
-
-    const spoolRecords = async () => {
-        const response = await http.service().get<any>('/data.json');
-
-        setAccount(response);
-    };
-
-    createEffect(() => {
-        console.log('acct', getAccount());
-    }, []);
-
-    createEffect(() => {
-        spoolRecords();
-    }, []);
-
+    const params = useParams();
+    const [data] = createResource(params, fetchData);
+    return data;
 }

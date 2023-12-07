@@ -12,23 +12,25 @@ export function classNames(...classes: (string | boolean | undefined)[]): string
 
 export type IconProps = { path: JSX.Element, outline?: boolean | undefined, mini?: boolean | undefined };
 
-async function fetchData() {
-    const response = await fetch(`/data.json`);
-    console.log(response.body)
+
+async function fetchAccount() {
+    const response = await fetch(`/account.json`);
     return await response.json();
 }
 
 export const App: Component = () => {
 
     const params = useParams();
-    const [data] = createResource(params, fetchData);
+    const [data] = createResource(params, fetchAccount);
+
+
 
     return (
         <>
             <Suspense fallback={<p>Loading...</p>}>
                 <Layout
                     logo={'./icons/icon-192x192.png'}
-                    title={data()?.name}
+                    title={data()?.company}
 
                 >
                     <Routes>
