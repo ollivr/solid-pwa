@@ -6,6 +6,7 @@ import {Footer}                     from "./Footer";
 const Layout: Component<{
     logo?: string;
     title?: string;
+    name?: string;
     children: JSXElement;
 }> = props =>  {
 
@@ -13,7 +14,9 @@ const Layout: Component<{
 
     return (
         <>
-            <Navigation />
+            <Navigation
+                logo={props.logo}
+                title={props.title} />
 
             <div
                 style={{

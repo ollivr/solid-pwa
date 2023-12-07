@@ -15,6 +15,7 @@ const Navigation: Component<{
     const [logo, setLogo] = createSignal('/icons/icon-192x192.png');
     const [title, setTitle] = createSignal('Ollivr');
 
+    console.log(props.logo)
 
     return (
         <>
@@ -30,17 +31,17 @@ const Navigation: Component<{
                                         fallback={
                                             <A href="/">
                                                 <span class="sr-only">{title()}</span>
-                                                <img
-                                                    class="h-12 w-auto"
-                                                    src={logo()}
-                                                    alt={title()}
-                                                />
+                                                <h1 class={'text-xl'}>{props.title}</h1>
                                             </A>
                                         }
-                                        when={showTitle()}>
+                                        when={props.logo}>
                                         <A href="/">
                                             <span class="sr-only">{title()}</span>
-                                            <h1 class={'text-xl'}>{title()}</h1>
+                                            <img
+                                                class="h-12 w-12 p-2"
+                                                src={props.logo}
+                                                alt={title()}
+                                            />
                                         </A>
                                     </Show>
 
