@@ -1,5 +1,5 @@
-import {type Component, createResource, type JSX, Suspense} from 'solid-js';
-import {Route, Routes, useParams}                           from "@solidjs/router";
+import {type Component, createMemo, createResource, type JSX, Suspense} from 'solid-js';
+import {Route, Routes, useParams}                                       from "@solidjs/router";
 import Home                                                 from "./pages/Home";
 import Login                                                from "./pages/Login";
 import Register                                             from "./pages/Register";
@@ -26,7 +26,46 @@ export const App: Component = () => {
     const params = useParams();
     const [data] = createResource(params, fetchAccount);
 
+    const weekdays: string[] = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+    ];
 
+    const months: string[] = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ]
+
+    const today = createMemo(() => {
+        const currentTime = new Date()
+        const month = currentTime.getMonth()
+        const day = currentTime.getDate()
+        const year = currentTime.getFullYear()
+        const dayOfWeek = currentTime.getDay()
+
+        return [
+            weekdays[dayOfWeek],
+            months[month],
+            day,
+            month + 1,
+            year
+        ]
+    })
 
     return (
         <>
@@ -34,6 +73,7 @@ export const App: Component = () => {
                 <Layout
                     logo={'./icons/logo.png'}
                     title={data()?.company}
+                    today={today()}
 
                 >
                     <Routes>

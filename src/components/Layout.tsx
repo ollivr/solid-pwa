@@ -7,16 +7,21 @@ const Layout: Component<{
     logo?: string;
     title?: string;
     name?: string;
+    today: any[]
     children: JSXElement;
 }> = props =>  {
 
 
+    console.log(props.today)
 
     return (
         <>
             <Navigation
                 logo={props.logo}
-                title={props.title} />
+                title={props.title}
+                today={props.today}
+
+            />
 
             <div
                 style={{
@@ -32,6 +37,7 @@ const Layout: Component<{
 
             <Footer
                 title={props.title}
+                today={props.today}
             />
         </>
     )

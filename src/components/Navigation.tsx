@@ -9,6 +9,7 @@ import {DailyActivities} from "./cards/activities/DailyActivities";
 const Navigation: Component<{
     logo?: string;
     title?: string;
+    today: any[]
 }> = props => {
 
     const [showTitle, setShowTitle] = createSignal(true)
@@ -16,6 +17,10 @@ const Navigation: Component<{
     const [title, setTitle] = createSignal('Ollivr');
 
     console.log(props.logo)
+
+
+
+
 
     return (
         <>
@@ -56,7 +61,7 @@ const Navigation: Component<{
 
                                     <Drawer
                                         title={'Notifications'}
-                                        subTitle={'Wed, March 23'}
+                                        subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[3]}, ${props.today[4]}`}
                                         icon={bell}
                                         className={'items-center pt-0.5'}
                                         enableButton>
@@ -68,7 +73,7 @@ const Navigation: Component<{
 
                                     <Drawer
                                         title={'Activities'}
-                                        subTitle={'Wed, March 23'}
+                                        subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[3]}, ${props.today[4]}`}
                                         icon={calendar}
                                         className={'items-center p-0.5'}
                                         enableButton>
@@ -83,7 +88,7 @@ const Navigation: Component<{
 
                                     <Drawer
                                         title={'Profile'}
-                                        subTitle={'Wed, March 23'}
+                                        subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[3]}, ${props.today[4]}`}
                                         className={'p-0.5'}
                                         enableButton>
                                         <div class={'p-4 w-full'}>
