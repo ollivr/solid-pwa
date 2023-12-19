@@ -1,5 +1,5 @@
-import {type Component, For, Match, Suspense, Switch} from "solid-js";
-import {useRouteData}                                 from "@solidjs/router";
+import {type Component, createEffect, createMemo, For, Match, Suspense, Switch} from "solid-js";
+import {useRouteData}                                                           from "@solidjs/router";
 
 export type ContactProps = {
     authorized_id: string;
@@ -26,8 +26,27 @@ export type ContactProps = {
     pivot?: any | null;
 }
 
+export type ContentProps = {
+    authorized_id: string;
+    created_at: string;
+    deleted_at: string;
+    data?: string;
+    format: string;
+    formatted?: string;
+    id: string;
+    label: string;
+    slug?: string;
+    model_type: string;
+    name: string;
+    primary_id?: string;
+    src: string;
+    state: string;
+    updated_at: string;
+    pivot?: any;
+    primary?: any;
+}
 
-const TeamView: Component<{}> = props => {
+const Team: Component<{}> = props => {
     const data: 'loading' | 'error' | any = useRouteData();
 
 
@@ -46,20 +65,21 @@ const TeamView: Component<{}> = props => {
                     </Match>
                     <Match when={!data?.error}>
 
-                        <div class="bg-white py-24 sm:py-32">
+                        <div class="absolute inset-0 bg-white py-2">
                             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                                <div class="mx-auto max-w-2xl sm:text-center">
-                                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data()?.data?.name}</h2>
-                                    <p class="mt-6 text-lg leading-8 text-gray-600">test {data()?.data?.name}</p>
+                                <div class="mx-auto max-w-2xl sm:text-center py-6">
+                                    <h2 class="py-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data()?.data?.name}</h2>
+                                    <p class="mt-4 text-lg leading-8 text-gray-600">test {data()?.data?.name}</p>
                                 </div>
                                 <ul role="list"
-                                    class="overflow-y-auto mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 lg:max-w-4xl lg:gap-x-8 xl:max-w-none">
+                                    class="h-[70vh] overflow-y-auto py-12 mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:max-w-4xl lg:gap-x-8 xl:max-w-none">
                                     <For each={data()?.contacts}>
                                         {(contact: ContactProps) => (
                                             <TeammateView
                                                 name={contact.name}
                                                 title={contact.username}
                                                 description={contact.primary?.profiles?.[0]?.description}
+                                                imageSrc={contact?.images?.[0]?.src ?? 'https://imagedelivery.net/jYAILuSxmZBHJW3H5LQP5g/ollivr.png/public'}
                                             />
 
                                         )}
@@ -76,7 +96,7 @@ const TeamView: Component<{}> = props => {
     )
 }
 
-export {TeamView}
+export {Team}
 
 
 const TeammateView: Component<{
@@ -85,6 +105,9 @@ const TeammateView: Component<{
     description?: string;
     imageSrc?: string;
 }> = props => {
+
+
+
 
     return (
         <>

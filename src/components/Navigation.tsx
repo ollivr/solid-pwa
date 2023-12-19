@@ -87,10 +87,11 @@ const Navigation: Component<{
                                         subTitle={'Wed, March 23'}
                                         className={'p-0.5'}
                                         enableButton>
-                                        <div class={'p-4'}>
+                                        <div class={'p-4 w-full flex justify-end'}>
 
-                                            <A href={'/about'}>
-                                                About
+                                            <A class={'text-xl font-semibold px-4'} href={'/about'}>
+
+                                                <span>About</span>
                                             </A>
 
                                         </div>

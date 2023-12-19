@@ -5,8 +5,9 @@ import Login                                                from "./pages/Login"
 import Register                                             from "./pages/Register";
 import {homeData}                                           from "./pages/home.data";
 import {Layout}                                             from './components/Layout';
-import {TeamView}                                           from "./pages/teams";
-import {teamData}                                           from "./pages/teams/teams.data";
+import {Team} from "./pages/Team";
+import {teamData} from "./pages/teams.data";
+
 
 export function classNames(...classes: (string | boolean | undefined)[]): string {
     return classes.filter(Boolean).join(' ')
@@ -43,7 +44,7 @@ export const App: Component = () => {
                         />
                         <Route
                             path="/about"
-                            component={TeamView}
+                            component={Team}
                             data={teamData}
                         />
                         <Route

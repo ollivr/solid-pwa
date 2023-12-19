@@ -97,7 +97,15 @@ const Drawer: Component<{
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="relative mt-2 flex-1 overflow-y-scroll scrollbar-hide ">{props.children || ''}</div>
+                                                    class="relative mt-2 flex-1 overflow-y-scroll scrollbar-hide ">
+                                                    <button
+                                                        type="button"
+                                                        class="w-full"
+                                                        onClick={closeModal}
+                                                    >
+                                                    {props.children || ''}
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
