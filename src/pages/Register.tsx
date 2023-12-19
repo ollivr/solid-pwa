@@ -4,20 +4,23 @@ import {Layout}         from "../components/Layout";
 
 import type { Component } from "solid-js";
 import {RegisterCard}     from "../components/cards/forms/RegisterCard";
+import {useRouteData}     from "@solidjs/router";
 
 
 
 
 const Register: Component<{
 }> = props => {
-
+    const data = useRouteData();
 
     return (
-        <Layout>
+
             <section class="bg-gray-100 p-8 text-gray-700 overflow-y-auto h-full">
-                <RegisterCard/>
+                <RegisterCard
+                    data={data}
+                />
             </section>
-        </Layout>
+
     );
 }
 

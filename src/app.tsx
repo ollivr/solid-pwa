@@ -5,6 +5,8 @@ import Login                                                from "./pages/Login"
 import Register                                             from "./pages/Register";
 import {homeData}                                           from "./pages/home.data";
 import {Layout}                                             from './components/Layout';
+import {TeamView}                                           from "./pages/teams";
+import {teamData}                                           from "./pages/teams/teams.data";
 
 export function classNames(...classes: (string | boolean | undefined)[]): string {
     return classes.filter(Boolean).join(' ')
@@ -29,7 +31,7 @@ export const App: Component = () => {
         <>
             <Suspense fallback={<p>Loading...</p>}>
                 <Layout
-                    logo={'./icons/icon-192x192.png'}
+                    logo={'./icons/logo.png'}
                     title={data()?.company}
 
                 >
@@ -37,11 +39,17 @@ export const App: Component = () => {
                         <Route
                             path="/"
                             component={Home}
-                            data={homeData}
+                            data={data}
+                        />
+                        <Route
+                            path="/about"
+                            component={TeamView}
+                            data={teamData}
                         />
                         <Route
                             path="/login"
                             component={Login}
+                            data={data}
                         />
                         <Route
                             path="/register"

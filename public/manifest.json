@@ -4,27 +4,32 @@
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "Ollivr",
-    "description": "Ollivr Application",
-    "short_name": "Ollivr",
+    "lang": "en",
+    "name": "ERIK SMITH App",
+    "short_name": "ERIK SMITH",
     "icons": [
         {
-            "src": "/icons/icon-192x192.png",
+            "src": "icons/icon72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/icons/icon-256x256.png",
+            "src": "icons/icon256x256.png",
             "sizes": "256x256",
             "type": "image/png"
         },
         {
-            "src": "/icons/icon-384x384.png",
+            "src": "icons/icon384x384.png",
             "sizes": "384x384",
             "type": "image/png"
         },
         {
-            "src": "/icons/icon-512x512.png",
+            "src": "icons/icon512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }

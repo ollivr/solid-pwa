@@ -89,6 +89,10 @@ const Navigation: Component<{
                                         enableButton>
                                         <div class={'p-4'}>
 
+                                            <A href={'/about'}>
+                                                About
+                                            </A>
+
                                         </div>
                                     </Drawer>
                                 </div>

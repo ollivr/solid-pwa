@@ -1,23 +1,23 @@
-
-import { Icon } from "solid-heroicons";
-import {Layout}         from "../components/Layout";
-
 import type { Component } from "solid-js";
 import {LoginCard}        from "../components/cards/forms/LoginCard";
+import { useRouteData } from "@solidjs/router";
 
 
 
 
 const Login: Component<{
 }> = props => {
+    const data = useRouteData();
 
 
     return (
-        <Layout>
+
             <section class="bg-gray-100 p-8 text-gray-700 overflow-y-auto h-full">
-                <LoginCard/>
+                <LoginCard
+                    data={data}
+                />
             </section>
-        </Layout>
+
     );
 }
 

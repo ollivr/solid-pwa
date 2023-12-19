@@ -1,11 +1,14 @@
 import './style.css';
-import {render} from 'solid-js/web';
-import {Router} from '@solidjs/router';
-import {App}    from './app';
+import {render}                from 'solid-js/web';
+import {Router}                from '@solidjs/router';
+import {App}                   from './app';
+import {GlobalContextProvider} from './globals/ContextApi';
 
 const dispose = render(() =>
         <Router>
-            <App/>
+            <GlobalContextProvider>
+                <App/>
+            </GlobalContextProvider>
         </Router>
     , document.getElementById('app'));
 
