@@ -5,7 +5,9 @@ import type {Component} from "solid-js";
 
 
 
-const Footer: Component<{}> = props => {
+const Footer: Component<{
+    title: string;
+}> = props => {
 
     function browserHistory(e) {
         if(e !== '/login' ?? e !== '/register') {
@@ -14,35 +16,13 @@ const Footer: Component<{}> = props => {
     }
 
     return (
-        <nav class="fixed right-0 bottom-0 left-0 bg-gray-100">
-
-
-            <div class="flex justify-center">
-                <div class="px-6 py-1 space-x-4 sm:block">
-
-                    <A
-                        href={`/`}
-                        class="text-sm text-gray-700"
-                    >
-                        Dashboard
-                    </A>
-
-                    <A
-                        href={`/login`}
-                        class="text-sm text-gray-700"
-                    >
-                        Log in
-                    </A>
-
-                    <A
-                        href={`/register`}
-                        class="ml-4 text-sm text-gray-700"
-                    >
-                        Register
-                    </A>
+        <footer class="bg-gray-50 fixed bottom-0 right-0 left-0 py-2">
+            <div class="">
+                <div class="mx-auto max-w-7xl overflow-hidden px-6 lg:px-8">
+                    <p class="text-center text-xs leading-5 text-gray-500">&copy; {new Date().getFullYear()} {props.title}, All rights reserved.</p>
                 </div>
             </div>
-        </nav>
+        </footer>
     )
 }
 

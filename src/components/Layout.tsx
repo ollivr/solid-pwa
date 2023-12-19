@@ -20,19 +20,19 @@ const Layout: Component<{
 
             <div
                 style={{
-                    height: '100dvh'
+                    height: '85dvh'
 
                 }}
-                class={'fixed inset-x-0 top-14 bottom-0 w-full h-full'}>
+                class={'mt-14 w-full h-full overflow-y-auto'}>
 
                 {props.children || ''}
 
 
             </div>
 
-
-            <Footer/>
-
+            <Footer
+                title={props.title}
+            />
         </>
     )
 

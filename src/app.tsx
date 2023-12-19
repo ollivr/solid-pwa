@@ -4,9 +4,9 @@ import Home                                                 from "./pages/Home";
 import Login                                                from "./pages/Login";
 import Register                                             from "./pages/Register";
 import {homeData}                                           from "./pages/home.data";
-import {Layout}                                             from './components/Layout';
-import {Team} from "./pages/Team";
-import {teamData} from "./pages/teams.data";
+import {Layout}   from './components/Layout';
+import {About}    from "./pages/About";
+import {aboutData} from "./pages/about.data";
 
 
 export function classNames(...classes: (string | boolean | undefined)[]): string {
@@ -44,8 +44,8 @@ export const App: Component = () => {
                         />
                         <Route
                             path="/about"
-                            component={Team}
-                            data={teamData}
+                            component={About}
+                            data={aboutData}
                         />
                         <Route
                             path="/login"

@@ -46,7 +46,7 @@ export type ContentProps = {
     primary?: any;
 }
 
-const Team: Component<{}> = props => {
+const About: Component<{}> = props => {
     const data: 'loading' | 'error' | any = useRouteData();
 
 
@@ -65,20 +65,27 @@ const Team: Component<{}> = props => {
                     </Match>
                     <Match when={!data?.error}>
 
-                        <div class="absolute inset-0 bg-white py-2">
+                        <div class="bg-gray-100 overflow-x-hidden py-10">
                             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                                 <div class="mx-auto max-w-2xl sm:text-center py-6">
+                                    <div class="w-full max-w-2xl xl:-mb-8 xl:w-96 xl:flex-none">
+                                        <div class="relative aspect-[2/1] h-full md:-mx-8 xl:mx-0 xl:aspect-auto">
+                                            <img
+                                                src={data()?.data.images?.[0]?.src}
+                                                class="absolute inset-0 h-full w-full rounded-2xl bg-gray-800 object-cover shadow-2xl" alt="" />
+                                        </div>
+                                    </div>
                                     <h2 class="py-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data()?.data?.name}</h2>
-                                    <p class="mt-4 text-lg leading-8 text-gray-600">test {data()?.data?.name}</p>
+                                    <p class="mt-4 text-lg leading-8 text-gray-600">{data()?.data?.documents?.[0]?.formatted?.[1]}</p>
                                 </div>
                                 <ul role="list"
-                                    class="h-[70vh] overflow-y-auto py-12 mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:max-w-4xl lg:gap-x-8 xl:max-w-none">
+                                    class="h-[70vh] overflow-y-auto py-20 mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:max-w-4xl lg:gap-x-8 xl:max-w-none rounded-2xl">
                                     <For each={data()?.contacts}>
                                         {(contact: ContactProps) => (
                                             <TeammateView
                                                 name={contact.name}
                                                 title={contact.username}
-                                                description={contact.primary?.profiles?.[0]?.description}
+                                                description={contact?.documents?.[0]?.formatted?.[1]}
                                                 imageSrc={contact?.images?.[0]?.src ?? 'https://imagedelivery.net/jYAILuSxmZBHJW3H5LQP5g/ollivr.png/public'}
                                             />
 
@@ -96,7 +103,7 @@ const Team: Component<{}> = props => {
     )
 }
 
-export {Team}
+export {About}
 
 
 const TeammateView: Component<{
@@ -111,7 +118,7 @@ const TeammateView: Component<{
 
     return (
         <>
-            <li class="flex flex-col gap-6 xl:flex-row">
+            <li class="bg-white p-4 flex flex-col gap-6 xl:flex-row rounded-2xl">
                 <img class="aspect-[4/5] w-52 flex-none rounded-2xl object-cover"
                      src={props.imageSrc}
                      alt=""/>

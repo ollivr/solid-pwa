@@ -12,7 +12,7 @@ async function fetchData() {
 }
 
 
-export function teamData() {
+export function aboutData() {
     const params = useParams();
     const [data] = createResource(params, fetchData);
     return data;

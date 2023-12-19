@@ -1,9 +1,9 @@
-import {A}                  from "@solidjs/router";
+import {A}                             from "@solidjs/router";
 import {Component, createSignal, Show} from "solid-js";
 
-import {Drawer} from "./Drawer";
-import {bell, calendar, magnifyingGlass, userCircle} from "solid-heroicons/solid";
-import {DailyActivities}                             from "./cards/activities/DailyActivities";
+import {Drawer}          from "./Drawer";
+import {bell, calendar}  from "solid-heroicons/solid";
+import {DailyActivities} from "./cards/activities/DailyActivities";
 
 
 const Navigation: Component<{
@@ -38,7 +38,7 @@ const Navigation: Component<{
                                         <A class={'flex justify-end items-center'} href="/">
                                             <span class="sr-only">{title()}</span>
                                             <img
-                                                class="h-12 w-12 p-2"
+                                                class="h-12 w-full p-1 rounded-lg"
                                                 src={props.logo}
                                                 alt={title()}
                                             />
@@ -61,7 +61,6 @@ const Navigation: Component<{
                                         className={'items-center pt-0.5'}
                                         enableButton>
                                         <div class={'p-4'}>
-
 
 
                                         </div>
@@ -87,13 +86,31 @@ const Navigation: Component<{
                                         subTitle={'Wed, March 23'}
                                         className={'p-0.5'}
                                         enableButton>
-                                        <div class={'p-4 w-full flex justify-end'}>
+                                        <div class={'p-4 w-full'}>
+                                            <div class={'flex flex-col space-y-4'}>
+                                                <A
+                                                    class={'text-xl font-semibold px-4 flex justify-between  items-center'} href={'/'}>
 
-                                            <A class={'text-xl font-semibold px-4'} href={'/about'}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-slot="icon" class="w-5 h-5">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                                    </svg>
 
-                                                <span>About</span>
-                                            </A>
+                                                    <span>Home</span>
+                                                </A>
 
+
+                                                <A
+                                                    activeClass={'text-orange-600'}
+                                                    inactiveClass={'text-gray-600'}
+                                                    class={'text-xl font-semibold px-4 flex justify-between  items-center'} href={'/about'}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-slot="icon" class="w-5 h-5">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                                    </svg>
+
+                                                    <span>About</span>
+                                                </A>
+
+                                            </div>
                                         </div>
                                     </Drawer>
                                 </div>
