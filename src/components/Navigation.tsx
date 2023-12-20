@@ -84,7 +84,7 @@ const Navigation: Component<{
 
 
                                     <Drawer
-                                        title={'Profile'}
+                                        title={props.title}
                                         subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[3]}, ${props.today[4]}`}
                                         className={'p-0.5'}
                                         enableButton>

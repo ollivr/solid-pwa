@@ -79,7 +79,7 @@ const Drawer: Component<{
                                                 <div
                                                     class="sticky z-50 top-0 left-0 right-0 header py-2 min-h-[60px] border-b border-slate-100 ">
                                                     <div class="px-7 flex justify-between items-center">
-                                                        <div class="heading">
+                                                        <div class="heading space-y-1 py-1">
                                                             <p class="text-xl font-semibold leading-tight text-gray-800">
                                                                 {props.title}
                                                             </p>
