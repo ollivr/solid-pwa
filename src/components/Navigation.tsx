@@ -19,9 +19,6 @@ const Navigation: Component<{
     console.log(props.logo)
 
 
-
-
-
     return (
         <>
 
@@ -40,15 +37,15 @@ const Navigation: Component<{
                                             </A>
                                         }
                                         when={props.logo}>
-                                        <A class={'flex justify-end items-center'} href="/">
-                                            <span class="sr-only">{title()}</span>
+                                        <A class={'flex justify-start items-center w-full space-x-2'} href="/">
+
                                             <img
-                                                class="h-12 w-full p-1 rounded-lg"
+                                                class="h-12 object-contain p-1 rounded-lg"
                                                 src={props.logo}
                                                 alt={title()}
                                             />
-
-                                            <h1 class={'hidden sm:block text-xl'}>{props.title}</h1>
+                                            <h1 class={'hidden w-full sm:block text-xl'}>{props.title}
+                                                <span class="sr-only">{title()}</span></h1>
                                         </A>
                                     </Show>
 
@@ -94,10 +91,14 @@ const Navigation: Component<{
                                         <div class={'p-4 w-full'}>
                                             <div class={'flex flex-col space-y-4'}>
                                                 <A
-                                                    class={'text-xl font-semibold px-4 flex justify-between  items-center'} href={'/'}>
+                                                    class={'text-xl font-semibold px-4 flex justify-between  items-center'}
+                                                    href={'/'}>
 
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-slot="icon" class="w-5 h-5">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                         data-slot="icon" class="w-5 h-5">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                              d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
                                                     </svg>
 
                                                     <span>Home</span>
@@ -107,9 +108,13 @@ const Navigation: Component<{
                                                 <A
                                                     activeClass={'text-orange-600'}
                                                     inactiveClass={'text-gray-600'}
-                                                    class={'text-xl font-semibold px-4 flex justify-between  items-center'} href={'/about'}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-slot="icon" class="w-5 h-5">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                                    class={'text-xl font-semibold px-4 flex justify-between  items-center'}
+                                                    href={'/about'}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                         data-slot="icon" class="w-5 h-5">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                              d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"/>
                                                     </svg>
 
                                                     <span>About</span>
