@@ -1,7 +1,8 @@
 import type { Component } from 'solid-js';
 import { Icon }           from 'solid-heroicons';
 import { stop }           from 'solid-heroicons/solid';
-import type { IconProps } from '../../globals/ContextApi';
+import type { IconProps } from '../../app';
+
 
 
 const IconBadge: Component<{
