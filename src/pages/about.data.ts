@@ -1,6 +1,5 @@
-import {HttpService}                                from "../services";
+
 import {createEffect, createResource, createSignal} from "solid-js";
-import type {IAccount, IUser}                       from '../types/models';
 import {useParams}                                  from "@solidjs/router";
 
 
