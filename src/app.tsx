@@ -58,6 +58,8 @@ export const App: Component = () => {
         const year = currentTime.getFullYear()
         const dayOfWeek = currentTime.getDay()
 
+        console.log('day', day)
+
         return [
             weekdays[dayOfWeek],
             months[month],

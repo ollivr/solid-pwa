@@ -58,7 +58,7 @@ const Navigation: Component<{
 
                                     <Drawer
                                         title={'Notifications'}
-                                        subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[3]}, ${props.today[4]}`}
+                                        subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[2]}, ${props.today[4]}`}
                                         icon={bell}
                                         className={'items-center pt-0.5'}
                                         enableButton>
@@ -70,7 +70,7 @@ const Navigation: Component<{
 
                                     <Drawer
                                         title={'Activities'}
-                                        subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[3]}, ${props.today[4]}`}
+                                        subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[2]}, ${props.today[4]}`}
                                         icon={calendar}
                                         className={'items-center p-0.5'}
                                         enableButton>
@@ -85,7 +85,7 @@ const Navigation: Component<{
 
                                     <Drawer
                                         title={props.title}
-                                        subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[3]}, ${props.today[4]}`}
+                                        subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[2]}, ${props.today[4]}`}
                                         className={'p-0.5'}
                                         enableButton>
                                         <div class={'p-4 w-full'}>

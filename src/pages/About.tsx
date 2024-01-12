@@ -1,7 +1,5 @@
 import { type Component, For, Match, Switch } from 'solid-js';
 import { useRouteData }                       from '@solidjs/router';
-import { Icon } from 'solid-heroicons';
-import { stop }                               from 'solid-heroicons/solid';
 import { IconBadge }                          from '../components/badges/IconBadge';
 
 export type ContactProps = {
