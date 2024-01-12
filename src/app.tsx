@@ -3,7 +3,6 @@ import {Route, Routes, useParams}                                       from "@s
 import Home                                                 from "./pages/Home";
 import Login                                                from "./pages/Login";
 import Register                                             from "./pages/Register";
-import {homeData}                                           from "./pages/home.data";
 import {Layout}   from './components/Layout';
 import {About}    from "./pages/About";
 import {aboutData} from "./pages/about.data";
