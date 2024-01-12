@@ -82,7 +82,6 @@ const Navigation: Component<{
                                         </div>
                                     </Drawer>
 
-
                                     <Drawer
                                         title={props.title}
                                         subTitle={`${props.today[0]}, ${props.today[1]}  ${props.today[2]}, ${props.today[4]}`}
