@@ -1,5 +1,6 @@
 import {type Component, For, Match, Switch} from 'solid-js';
 import {useRouteData}                       from '@solidjs/router';
+import {classNames}                         from "../app";
 
 export type ContactProps = {
     authorized_id: string;
@@ -68,46 +69,41 @@ const About: Component<{}> = props => {
                         <div class="mx-auto max-w-7xl">
 
                             <div>
-                                <img class="h-28 w-full object-cover"
+                                <img class="h-16 w-full object-cover"
                                      src={data()?.data.images?.[0]?.src}
                                      alt=""/>
                             </div>
-                            <div class="max-w-5xl px-4 sm:px-6 lg:px-8">
-                                <div class="-mt-16 sm:flex sm:items-end sm:space-x-5">
-                                    <div class="flex">
-                                        <div class={'flex justify-start space-x-4 items-end'}>
+                            <div class="max-w-5xl px-4 sm:px-6 lg:px-8 border-b border-slate-200 pb-2">
+                                <div class="-mt-7 sm:flex sm:items-end sm:space-x-5">
+                                    <div class="flex w-full">
+                                        <div class={'flex justify-between w-full space-x-4 items-start'}>
+                                            <div class={'flex w-full justify-start space-x-4 items-end'}>
                                             <img
-                                                class="h-24 w-24 object-cover rounded-lg ring-4 ring-white sm:h-32 sm:w-32"
+                                                class="h-16 w-16 object-cover rounded-lg ring-4 ring-white sm:h-20 sm:w-20"
                                                 src={data()?.data.images?.[0]?.src}
                                                 alt=""/>
+                                                <h1 class="truncate text-2xl font-bold text-gray-900 flex justify-start space-x-4 items-baseline">
+                                                    <span>{data()?.data?.name}</span>
+                                                </h1>
+                                            </div>
 
-                                            <span class={'sm:hidden'}>
-                      <IconBadge title={data()?.data?.model_type}/>
-                    </span>
+                                            <span class={''}>
+                                                 <IconBadge title={data()?.data?.model_type}/>
+                                               </span>
                                         </div>
                                     </div>
-                                    <div
-                                        class="mt-2 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1 border-b border-slate-200">
-                                        <div class="py-2 min-w-0 flex-1">
-                                            <h1 class="truncate text-2xl font-bold text-gray-900 flex justify-start space-x-4 items-baseline">
-                                                <span>{data()?.data?.name}</span>
-                                                <span class={'hidden sm:block'}>
-                        <IconBadge title={data()?.data?.model_type}/>
-                        </span>
-                                            </h1>
 
-                                        </div>
-
-                                    </div>
                                 </div>
                             </div>
 
-                            <div class="snap-y snap-mandatory h-[80vh] overflow-scroll">
+                            <div class="snap-y snap-mandatory h-[80vh] scrollbar-hide overflow-scroll">
                                 <div
-                                    class="px-4 sm:py-4 snap-start w-screen h-[80vh] flex items-start justify-center text-8xl">
+                                    class="px-4 sm:py-4 snap-start w-screen flex flex-col justify-center text-8xl">
 
-                                    <div class="mx-auto max-w-2xl sm:text-left">
-                                        <p class="text-base leading-8 text-gray-600">{data()?.data?.documents?.[0]?.formatted?.[1]}</p>
+                                    <div class={classNames(
+                                        data()?.data?.documents?.[0]?.formatted?.[1] ? 'pt-2 pb-24' : 'hidden',
+                                        'mx-auto max-w-2xl sm:text-left w-full h-[60vh] p-2 overflow-y-auto')}>
+                                        <p class="text-base leading-8 w-full text-gray-600">{data()?.data?.documents?.[0]?.formatted?.[1]}</p>
                                     </div>
 
                                 </div>
