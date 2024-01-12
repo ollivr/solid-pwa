@@ -1,152 +1,185 @@
-import {type Component, createEffect, createMemo, For, Match, Suspense, Switch} from "solid-js";
-import {useRouteData}                                                           from "@solidjs/router";
+import { type Component, For, Match, Switch } from 'solid-js';
+import { useRouteData }                       from '@solidjs/router';
+import { Icon } from 'solid-heroicons';
+import { stop }                               from 'solid-heroicons/solid';
+import { IconBadge }                          from '../components/badges/IconBadge';
 
 export type ContactProps = {
-    authorized_id: string;
-    created_at: string | null;
-    data: Array<any> | null;
-    deleted_at: string | null;
-    email: string | null;
-    first_name: string;
-    formatted: string | null;
-    slug: string | null;
-    id: string | undefined;
-    label: string;
-    last_name: string;
-    middle_name: string | null;
-    model_type: string;
-    name: string;
-    primary_id: string | undefined;
-    state: string;
-    updated_at: string | null;
-    username: string | null;
-    primary: any | null;
-    images?: any[];
-    documents?: any[];
-    pivot?: any | null;
+  authorized_id: string;
+  created_at: string | null;
+  data: Array<any> | null;
+  deleted_at: string | null;
+  email: string | null;
+  first_name: string;
+  formatted: string | null;
+  slug: string | null;
+  id: string | undefined;
+  label: string;
+  last_name: string;
+  middle_name: string | null;
+  model_type: string;
+  name: string;
+  primary_id: string | undefined;
+  state: string;
+  updated_at: string | null;
+  username: string | null;
+  primary: any | null;
+  images?: any[];
+  documents?: any[];
+  pivot?: any | null;
 }
 
 export type ContentProps = {
-    authorized_id: string;
-    created_at: string;
-    deleted_at: string;
-    data?: string;
-    format: string;
-    formatted?: string;
-    id: string;
-    label: string;
-    slug?: string;
-    model_type: string;
-    name: string;
-    primary_id?: string;
-    src: string;
-    state: string;
-    updated_at: string;
-    pivot?: any;
-    primary?: any;
+  authorized_id: string;
+  created_at: string;
+  deleted_at: string;
+  data?: string;
+  format: string;
+  formatted?: string;
+  id: string;
+  label: string;
+  slug?: string;
+  model_type: string;
+  name: string;
+  primary_id?: string;
+  src: string;
+  state: string;
+  updated_at: string;
+  pivot?: any;
+  primary?: any;
 }
 
 const About: Component<{}> = props => {
-    const data: 'loading' | 'error' | any = useRouteData();
+  const data: 'loading' | 'error' | any = useRouteData();
 
 
+  return (
+    <>
 
-    return (
-        <>
+      <Switch>
+        <Match when={data.loading} keyed>
+          <div class={'flex justify-center items-center module-height absolute inset-0'}>
 
-                <Switch>
-                    <Match when={data.loading} keyed>
-                        <div class={'flex justify-center items-center module-height absolute inset-0'}>
+          </div>
+        </Match>
+        <Match when={data?.error} keyed>
+          ERROR
+        </Match>
+        <Match when={!data?.error}>
 
+          <div class="bg-gray-100 overflow-hidden fixed inset-x-0 top-14 bottom-0">
+            <div class="mx-auto max-w-7xl">
+
+              <div>
+                <img class="h-28 w-full object-cover"
+                     src={data()?.data.images?.[0]?.src}
+                     alt="" />
+              </div>
+              <div class="max-w-5xl px-4 sm:px-6 lg:px-8">
+                <div class="-mt-16 sm:flex sm:items-end sm:space-x-5">
+                  <div class="flex">
+                    <div class={'flex justify-start space-x-4 items-end'}>
+                      <img class="h-24 w-24 object-cover rounded-lg ring-4 ring-white sm:h-32 sm:w-32"
+                           src={data()?.data.images?.[0]?.src}
+                           alt="" />
+
+                    <span class={'sm:hidden'}>
+                      <IconBadge title={data()?.data?.model_type} />
+                    </span>
+                    </div>
+                  </div>
+                  <div class="mt-2 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1 border-b border-slate-200">
+                    <div class="py-2 min-w-0 flex-1">
+                      <h1 class="truncate text-2xl font-bold text-gray-900 flex justify-start space-x-4 items-baseline">
+                        <span>{data()?.data?.name}</span>
+                        <span class={'hidden sm:block'}>
+                        <IconBadge title={data()?.data?.model_type} />
+                        </span>
+                      </h1>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="snap-y snap-mandatory h-[80vh] overflow-scroll">
+                <div class="px-4 sm:py-4 snap-start w-screen h-[80vh] flex items-start justify-center text-8xl">
+
+                  <div class="mx-auto max-w-2xl sm:text-left">
+                    <p class="text-base leading-8 text-gray-600">{data()?.data?.documents?.[0]?.formatted?.[1]}</p>
+                  </div>
+
+                </div>
+                <div class="snap-start w-screen h-[80vh] flex items-center justify-center text-8xl">
+                  <div class="snap-x pt-4 sm:mx-auto snap-mandatory sm:grid sm:grid-cols-3 sm:gap-4 h-[80vh] overflow-y-hidden flex w-screen overflow-scroll">
+
+                    <For each={data()?.contacts}>
+                      {(contact: ContactProps) => (
+                        <div
+                          class={'snap-start w-screen sm:w-full flex-shrink-0 flex items-center justify-center text-8xl'}>
+                          <TeammateView
+                            title={contact.name}
+                            subTitle={contact.username}
+                            description={contact?.documents?.[0]?.formatted?.[1]}
+                            imageSrc={contact?.images?.[0]?.src ?? 'https://imagedelivery.net/jYAILuSxmZBHJW3H5LQP5g/ollivr.png/public'}
+                          />
                         </div>
-                    </Match>
-                    <Match when={data?.error} keyed>
-                        ERROR
-                    </Match>
-                    <Match when={!data?.error}>
-
-                        <div class="bg-gray-100 overflow-hidden">
-                            <div class="mx-auto max-w-7xl">
-
-                                <div class="snap-y snap-mandatory h-[90dvh] overflow-scroll">
-                                    <div class="px-4 snap-start w-screen h-[90dvh] flex items-center justify-center text-8xl">
-
-                                        <div class="mx-auto max-w-2xl sm:text-center">
-                                            <div class="w-full max-w-2xl xl:-mb-8 xl:w-96 xl:flex-none">
-                                                <div class="relative aspect-[2/1] h-full md:-mx-8 xl:mx-0 xl:aspect-auto">
-                                                    <img
-                                                      src={data()?.data.images?.[0]?.src}
-                                                      class="absolute inset-0 h-full w-full rounded-2xl bg-gray-800 object-cover shadow-2xl" alt="" />
-                                                </div>
-                                            </div>
-                                            <h2 class="py-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data()?.data?.name}</h2>
-                                            <p class="mt-4 text-base leading-8 text-gray-600">{data()?.data?.documents?.[0]?.formatted?.[1]}</p>
-                                        </div>
-
-                                    </div>
-                                    <div class="snap-start w-screen  h-[90dvh] flex items-center justify-center text-8xl">
-                                        <div class="snap-x mx-auto snap-mandatory h-[90dvh] overflow-y-hidden flex w-screen overflow-scroll">
-
-                                            <For each={data()?.contacts}>
-                                                {(contact: ContactProps) => (
-                                                  <div class={'snap-start bg-amber-200 w-screen flex-shrink-0 max-h-[70dvh] py-[10dvh] flex items-center justify-center text-8xl'}>
-                                                      <TeammateView
-                                                        name={contact.name}
-                                                        title={contact.username}
-                                                        description={contact?.documents?.[0]?.formatted?.[1]}
-                                                        imageSrc={contact?.images?.[0]?.src ?? 'https://imagedelivery.net/jYAILuSxmZBHJW3H5LQP5g/ollivr.png/public'}
-                                                      />
-                                                  </div>
-                                                )}
-                                            </For>
-                                        </div>
-                                    </div>
-                                </div>
+                      )}
+                    </For>
+                  </div>
+                </div>
+              </div>
 
 
+            </div>
+          </div>
 
-                            </div>
-                        </div>
 
+        </Match>
+      </Switch>
 
-                    </Match>
-                </Switch>
+    </>
+  );
+};
 
-        </>
-    )
-}
-
-export {About}
+export { About };
 
 
 const TeammateView: Component<{
-    name: string;
-    title: string;
-    description?: string;
-    imageSrc?: string;
+  title: string;
+  subTitle: string;
+  description?: string;
+  imageSrc?: string;
 }> = props => {
 
 
+  return (
+    <>
+      <article class="w-full sm:mx-auto min-w-[w-screen] sm:w-full shadow-xl min-h-[80vh] sm:min-h-[70vh] bg-cover bg-center  transform duration-500 hover:-translate-y-2 cursor-pointer group"
+               style={{
+                 "background-image": `url(${props.imageSrc})`
+               }}
+      >
+        <div class="bg-black bg-opacity-20 min-h-[20vh] px-10 flex flex-wrap flex-col pt-48 hover:bg-opacity-75 transform duration-300">
+          <div class={'flex flex-col'}>
+          <h1 class="text-white text-3xl mb-5 transform translate-y-20 group-hover:translate-y-0 duration-300">
+            <p class={'text-sm'}>{props.subTitle}</p>
+            {props.title}
 
+          </h1>
 
-    return (
-        <>
-            <li class="h-[70dvh] bg-white px-4 flex flex-col gap-6 xl:flex-row rounded-2xl">
-                <img class="max-w-[70dvw] flex-none rounded-2xl object-contain"
-                     src={props.imageSrc}
-                     alt=""/>
-                <div class="flex-auto">
-                    <h3 class="text-lg font-semibold leading-8 tracking-tight text-gray-900">
-                        {props.name}
-                    </h3>
-                    <p class="text-base leading-7 text-gray-600">{props.title}</p>
-                    <p class="text-base leading-7 text-gray-600">
-                        {props.description}
-                    </p>
-                </div>
-            </li>
-        </>
-    )
-}
+          </div>
+          <div class="w-16 h-2 bg-white rounded-full mb-5 transform translate-y-20 group-hover:translate-y-0 duration-300">
+          </div>
+          <p class="opacity-0 h-[60vh] sm:h-[50vh] text-white text-xl group-hover:opacity-80 transform duration-500">
+            {props.description}
+          </p>
+        </div>
 
-export {TeammateView}
+      </article>
+    </>
+  );
+};
+
+export { TeammateView };
