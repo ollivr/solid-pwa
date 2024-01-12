@@ -65,33 +65,46 @@ const About: Component<{}> = props => {
                     </Match>
                     <Match when={!data?.error}>
 
-                        <div class="bg-gray-100 overflow-x-hidden py-10">
-                            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                                <div class="mx-auto max-w-2xl sm:text-center py-6">
-                                    <div class="w-full max-w-2xl xl:-mb-8 xl:w-96 xl:flex-none">
-                                        <div class="relative aspect-[2/1] h-full md:-mx-8 xl:mx-0 xl:aspect-auto">
-                                            <img
-                                                src={data()?.data.images?.[0]?.src}
-                                                class="absolute inset-0 h-full w-full rounded-2xl bg-gray-800 object-cover shadow-2xl" alt="" />
+                        <div class="bg-gray-100 overflow-hidden">
+                            <div class="mx-auto max-w-7xl">
+
+                                <div class="snap-y snap-mandatory h-[90dvh] overflow-scroll">
+                                    <div class="px-4 snap-start w-screen h-[90dvh] flex items-center justify-center text-8xl">
+
+                                        <div class="mx-auto max-w-2xl sm:text-center">
+                                            <div class="w-full max-w-2xl xl:-mb-8 xl:w-96 xl:flex-none">
+                                                <div class="relative aspect-[2/1] h-full md:-mx-8 xl:mx-0 xl:aspect-auto">
+                                                    <img
+                                                      src={data()?.data.images?.[0]?.src}
+                                                      class="absolute inset-0 h-full w-full rounded-2xl bg-gray-800 object-cover shadow-2xl" alt="" />
+                                                </div>
+                                            </div>
+                                            <h2 class="py-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data()?.data?.name}</h2>
+                                            <p class="mt-4 text-base leading-8 text-gray-600">{data()?.data?.documents?.[0]?.formatted?.[1]}</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="snap-start w-screen  h-[90dvh] flex items-center justify-center text-8xl">
+                                        <div class="snap-x mx-auto snap-mandatory h-[90dvh] overflow-y-hidden flex w-screen overflow-scroll">
+
+                                            <For each={data()?.contacts}>
+                                                {(contact: ContactProps) => (
+                                                  <div class={'snap-start bg-amber-200 w-screen flex-shrink-0 max-h-[70dvh] py-[10dvh] flex items-center justify-center text-8xl'}>
+                                                      <TeammateView
+                                                        name={contact.name}
+                                                        title={contact.username}
+                                                        description={contact?.documents?.[0]?.formatted?.[1]}
+                                                        imageSrc={contact?.images?.[0]?.src ?? 'https://imagedelivery.net/jYAILuSxmZBHJW3H5LQP5g/ollivr.png/public'}
+                                                      />
+                                                  </div>
+                                                )}
+                                            </For>
                                         </div>
                                     </div>
-                                    <h2 class="py-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data()?.data?.name}</h2>
-                                    <p class="mt-4 text-lg leading-8 text-gray-600">{data()?.data?.documents?.[0]?.formatted?.[1]}</p>
                                 </div>
-                                <ul role="list"
-                                    class="h-[70vh] overflow-y-auto py-20 mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:max-w-4xl lg:gap-x-8 xl:max-w-none rounded-2xl">
-                                    <For each={data()?.contacts}>
-                                        {(contact: ContactProps) => (
-                                            <TeammateView
-                                                name={contact.name}
-                                                title={contact.username}
-                                                description={contact?.documents?.[0]?.formatted?.[1]}
-                                                imageSrc={contact?.images?.[0]?.src ?? 'https://imagedelivery.net/jYAILuSxmZBHJW3H5LQP5g/ollivr.png/public'}
-                                            />
 
-                                        )}
-                                    </For>
-                                </ul>
+
+
                             </div>
                         </div>
 
@@ -118,8 +131,8 @@ const TeammateView: Component<{
 
     return (
         <>
-            <li class="bg-white p-4 flex flex-col gap-6 xl:flex-row rounded-2xl">
-                <img class="aspect-[4/5] w-52 flex-none rounded-2xl object-cover"
+            <li class="h-[70dvh] bg-white px-4 flex flex-col gap-6 xl:flex-row rounded-2xl">
+                <img class="max-w-[70dvw] flex-none rounded-2xl object-contain"
                      src={props.imageSrc}
                      alt=""/>
                 <div class="flex-auto">
@@ -127,7 +140,7 @@ const TeammateView: Component<{
                         {props.name}
                     </h3>
                     <p class="text-base leading-7 text-gray-600">{props.title}</p>
-                    <p class="mt-6 text-base leading-7 text-gray-600">
+                    <p class="text-base leading-7 text-gray-600">
                         {props.description}
                     </p>
                 </div>
